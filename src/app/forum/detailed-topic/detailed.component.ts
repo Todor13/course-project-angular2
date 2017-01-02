@@ -35,8 +35,8 @@ export class DetailedComponent implements OnInit {
       this.isLogged = true;
     }
     this.subscription = this.activatedRoute.params.subscribe(
-      (queryParam: any) => {
-        this.id = queryParam['id'];
+      (param: any) => {
+        this.id = param['id'];
       });
     this.forumService.getTopicById(this.id)
       .subscribe(

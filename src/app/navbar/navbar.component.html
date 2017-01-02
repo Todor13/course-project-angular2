@@ -9,12 +9,13 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand btn" [routerLink]="['home']">Bakery</a>
+      <a class="navbar-brand btn" [routerLink]="['home']">Let's talk</a>
     </div>
     <div class="collapse navbar-collapse"
          [ngClass]="{ 'in': isIn }">
       <ul class="nav navbar-nav">
         <li><a class="btn" [routerLink]="['/forum']">Forum</a></li>
+        <li><a class="btn" [routerLink]="['/users']">Users</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a class="btn" *ngIf="!isLogged()" [routerLink]="['register']">Register</a></li>

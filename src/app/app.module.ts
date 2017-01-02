@@ -22,6 +22,9 @@ import { ReactiveFormsModule } from '@angular/forms'
 import { AuthGuard } from './common/auth.guard';
 import { LoggedService } from './shared/logged.service';
 import { NoContentComponent } from'./no-content/no-content.component';
+import { UsersComponent } from './users/users.component';
+import { UserComponent } from './users/user/user.component';
+
 
 
 @NgModule({
@@ -35,7 +38,9 @@ import { NoContentComponent } from'./no-content/no-content.component';
     CreateComponent,
     DetailedComponent,
     SearchComponent,
-    NoContentComponent
+    NoContentComponent,
+    UsersComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,
