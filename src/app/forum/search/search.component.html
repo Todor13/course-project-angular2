@@ -1,0 +1,39 @@
+<h1>Search results</h1>
+<div class="nav navbar">
+  <a class="btn btn-default" [routerLink]="['create']" [style.display]="!isLogged?'none':'initial'">Create topic</a>
+  <form (ngSubmit)="onSubmit()" #searchForm="ngForm">
+    <input type="text" [(ngModel)]="search" name="search">
+    <button type="submit" class="btn btn-default">Search</button>
+  </form>
+</div>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <div class="page-header">
+        <h1>
+          Topics Found
+        </h1>
+      </div>
+      <div class="content-wrapper">
+        <table class="table table-bordered table-striped custab" *ngFor="let topic of topics">
+          <tr>
+            <th class="btn-default" [routerLink]="['/forum', topic._id]">{{topic.title}}</th>
+          </tr>
+          <tr>
+            <td><p>Created by {{topic.username}} on {{topic.dateTime | date:"dd MMMM yyyy, H:mm:ss"}}</p></td>
+          </tr>
+        </table>
+        <ul class="list list-inline text-center">
+          <li *ngFor="let number of count">
+            <a *ngIf="page == number" class="btn btn-primary disabled" [routerLink]="" [queryParams]="{page: number, title: search}">{{number}}</a>
+            <a *ngIf="page != number" class="btn btn-default" [routerLink]=""
+               [queryParams]="{page: number, title: search}">{{number}}</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
