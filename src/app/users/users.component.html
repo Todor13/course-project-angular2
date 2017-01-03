@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <div class="page-header">
+        <h1>
+          Users
+        </h1>
+      </div>
+      <div class="content-wrapper">
+        <table class="table table-bordered table-striped custab" *ngFor="let user of users">
+          <tr>
+            <th class="btn-default" [routerLink]="['/users', user._id]">Username: {{user.username}}</th>
+          </tr>
+        </table>
+        <ul class="list list-inline text-center">
+          <li *ngFor="let number of count">
+            <a *ngIf="page == number" class="btn btn-primary disabled" [routerLink]="" [queryParams]="{page: number}">{{number}}</a>
+            <a *ngIf="page != number" class="btn btn-default" [routerLink]=""
+               [queryParams]="{page: number}">{{number}}</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

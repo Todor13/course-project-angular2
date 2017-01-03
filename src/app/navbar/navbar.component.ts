@@ -12,20 +12,25 @@ import { Logged } from '../../models/logged';
 export class NavbarComponent implements OnInit{
   isIn = false;
   username: string;
-  private logged: Logged;
+  logged: Logged;
+  id: string;
 
   constructor(private authGuard: AuthGuard, private authService: AuthenticationService,
   private loggedService: LoggedService){
-    this.loggedService.getLogged().subscribe(logged => {
-      this.logged = logged;
-      this.username = this.logged.username;
-    })
+
   }
+
+
 
   ngOnInit(){
     if (this.isLogged()){
       this.getCurrentUser();
     }
+    this.loggedService.getLogged().subscribe(logged => {
+      this.logged = logged;
+      this.username = this.logged.username;
+      this.id = this.logged.id;
+    })
   }
 
   toggleState() {
@@ -47,6 +52,7 @@ export class NavbarComponent implements OnInit{
     if (localStorage.getItem('currentUser')){
       json = JSON.parse(localStorage.getItem('currentUser'));
       this.username = json.username;
+      this.id = json.id;
     }
 
   }

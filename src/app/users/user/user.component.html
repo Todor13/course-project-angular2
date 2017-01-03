@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <div class="page-header">
+        <h1>
+          Users
+        </h1>
+      </div>
+      <div class="content-wrapper">
+        <a class="btn btn-default" (click)="backClicked()">Back</a>
+        <table class="table table-bordered table-striped custab">
+          <tr>
+            <th>Username: {{user.username}}</th>
+          </tr>
+          <tr>
+            <td><p>First Name: {{user.firstname}}</p></td>
+          </tr>
+          <tr>
+            <td><p>Last Name: {{user.lastname}}</p></td>
+          </tr>
+          <tr>
+            <td><p>Email: {{user.email}}</p></td>
+          </tr>
+          <tr>
+            <td><p>Role: {{role}}</p></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

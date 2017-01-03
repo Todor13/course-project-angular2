@@ -20,18 +20,22 @@ export class LoginComponent {
   }
 
   login(){
-    this.logged = {username: this.username};
+
     this.authService.login(this.username, this.password)
-        .subscribe(data=>this.handleResponse(data));
-    this.loggedService.setLogged(this.logged);
+        .subscribe(
+          data => {
+            this.handleResponse(data);
+            this.logged = {username: data.result.username, id: data.result.id};
+            this.loggedService.setLogged(this.logged);
+          });
+
 
   }
 
   handleResponse(data){
-    console.log(data);
     if (!data.error){
       this.submited = true;
-      this.message = `Welcome ${data}!`;
+      this.message = `Welcome ${data.result.username}!`;
       setTimeout(()=>this.router.navigate(['home']), 2000);
     }else {
       this.message = data.error;

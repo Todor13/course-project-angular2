@@ -15,13 +15,13 @@
          [ngClass]="{ 'in': isIn }">
       <ul class="nav navbar-nav">
         <li><a class="btn" [routerLink]="['/forum']">Forum</a></li>
-        <li><a class="btn" [routerLink]="['/users']">Users</a></li>
+        <li><a class="btn" *ngIf="isLogged()" [routerLink]="['/users']">Users</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a class="btn" *ngIf="!isLogged()" [routerLink]="['register']">Register</a></li>
-        <li><a class="btn" *ngIf="!isLogged()" [routerLink]="['login']">Login</a></li>
+        <li><a class="btn" *ngIf="!isLogged()" [routerLink]="['/register']">Register</a></li>
+        <li><a class="btn" *ngIf="!isLogged()" [routerLink]="['/login']">Login</a></li>
         <li><a class="btn" *ngIf="isLogged()" (click)="logOut()">Logout</a> </li>
-        <li><a class="btn" *ngIf="isLogged()">{{username}}</a></li>
+        <li><a class="btn" *ngIf="isLogged()" [routerLink]="['/users', id]">{{username}}</a></li>
       </ul>
     </div>
   </div>
