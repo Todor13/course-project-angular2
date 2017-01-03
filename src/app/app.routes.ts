@@ -10,6 +10,7 @@ import { AuthGuard } from './common/auth.guard';
 import { NoContentComponent } from './no-content/no-content.component';
 import { UsersComponent } from './users/users.component';
 import { UserComponent } from './users/user/user.component';
+import { ProfileComponent } from './users/profile/profile.component';
 
 
 export const AppRoutes: Routes = [
@@ -23,5 +24,6 @@ export const AppRoutes: Routes = [
     { path: 'forum/:id', component: DetailedComponent },
     { path: 'users', component: UsersComponent, canActivate: [AuthGuard] },
     { path: 'users/:id', component: UserComponent, canActivate: [AuthGuard] },
+    { path: 'profile/:id', component: ProfileComponent },
     { path: '**',    component: NoContentComponent }
 ];

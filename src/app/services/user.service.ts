@@ -31,4 +31,9 @@ export class UserService {
           .map((response: Response) => response.json());
     }
 
+    updateUser(user: User, id: string): Observable<any> {
+        return this.http.post(`${Domain}${GetUsers}${id}`, JSON.stringify(user), {headers: ContentHeaders})
+          .map((response: Response) => response.json());
+    }
+
 }

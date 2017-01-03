@@ -1,34 +1,32 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { Subscription } from "rxjs/Rx";
-import { ActivatedRoute } from '@angular/router'
+import { ActivatedRoute, Router } from '@angular/router'
 import { UserService } from '../../services/user.service';
 import { User } from '../../../models/user';
 
 @Component({
-  selector: 'app-user',
-  templateUrl: './user.component.html',
-  styleUrls: ['./user.component.css']
+  selector: 'app-profile',
+  templateUrl: './profile.component.html',
+  styleUrls: ['./profile.component.css']
 })
-export class UserComponent implements OnInit {
+export class ProfileComponent implements OnInit {
   user = new User();
   id: string;
   private subscription: Subscription;
   role: string;
-  isProfile = false;
+  result: string;
+  submitted = false;
+
 
   constructor(private location: Location,  private activatedRoute: ActivatedRoute,
-  private userService: UserService) { }
+              private userService: UserService, private router: Router) { }
 
   ngOnInit() {
     this.subscription = this.activatedRoute.params.subscribe(
       (param: any) => {
         this.id = param['id'];
       });
-    let userId = this.getUserId();
-    if (userId == this.id){
-      this.isProfile = true;
-    }
     this.userService.getUserById(this.id)
       .subscribe(
         data => {
@@ -44,12 +42,13 @@ export class UserComponent implements OnInit {
     this.location.back();
   }
 
-  getUserId(): string{
-    var json;
-
-    if (localStorage.getItem('currentUser')){
-      json = JSON.parse(localStorage.getItem('currentUser'));
-      return json.id;
-    }
+  onSubmit(){
+    this.submitted = true;
+    console.log('called');
+    this.userService.updateUser(this.user, this.id)
+      .subscribe(data => {
+        this.result = data.result;
+        setTimeout(()=> this.router.navigate(['/users', this.id]), 1500);
+      });
   }
 }

@@ -24,6 +24,8 @@ import { LoggedService } from './shared/logged.service';
 import { NoContentComponent } from'./no-content/no-content.component';
 import { UsersComponent } from './users/users.component';
 import { UserComponent } from './users/user/user.component';
+import { ProfileComponent } from './users/profile/profile.component';
+
 
 
 
@@ -40,7 +42,8 @@ import { UserComponent } from './users/user/user.component';
     SearchComponent,
     NoContentComponent,
     UsersComponent,
-    UserComponent
+    UserComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
